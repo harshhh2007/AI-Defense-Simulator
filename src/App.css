@@ -1,0 +1,1475 @@
+@import "tailwindcss";
+
+/* =========================================================
+   VIVAAI — LIQUID GLASS UI ENGINE
+   Apple / visionOS inspired
+   ========================================================= */
+
+:root {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    "Segoe UI",
+    sans-serif;
+
+  color: #f7f7fa;
+  background: #050507;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --glass-white: rgba(255, 255, 255, 0.075);
+  --glass-light: rgba(255, 255, 255, 0.11);
+  --glass-border: rgba(255, 255, 255, 0.105);
+
+  --blue: #4d7cff;
+  --purple: #914cff;
+  --pink: #c44cff;
+  --cyan: #4cd9ff;
+
+  --spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #050507;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  color: #f7f7fa;
+
+  background:
+    radial-gradient(
+      circle at 8% 5%,
+      rgba(61, 105, 255, 0.17),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 92% 8%,
+      rgba(150, 65, 255, 0.15),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(55, 120, 255, 0.09),
+      transparent 38%
+    ),
+    #050507;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   AMBIENT LIGHT
+   ========================================================= */
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+
+  border-radius: 999px;
+
+  filter: blur(100px);
+
+  z-index: -10;
+}
+
+body::before {
+  width: 520px;
+  height: 520px;
+
+  top: -220px;
+  left: -180px;
+
+  background: rgba(54, 104, 255, 0.16);
+
+  animation:
+    ambientBlue 15s ease-in-out infinite;
+}
+
+body::after {
+  width: 500px;
+  height: 500px;
+
+  top: 15%;
+  right: -220px;
+
+  background: rgba(146, 63, 255, 0.13);
+
+  animation:
+    ambientPurple 18s ease-in-out infinite;
+}
+
+@keyframes ambientBlue {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(100px, 70px, 0) scale(1.15);
+  }
+}
+
+@keyframes ambientPurple {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-100px, 80px, 0) scale(1.12);
+  }
+}
+
+/* =========================================================
+   CLEAN PREMIUM BACKGROUND
+   ========================================================= */
+
+body {
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(61, 105, 255, 0.13),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 88% 5%,
+      rgba(150, 65, 255, 0.11),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(55, 120, 255, 0.06),
+      transparent 35%
+    ),
+    #050507;
+
+  background-attachment: fixed;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.23);
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  color: white;
+  background: rgba(95, 92, 255, 0.4);
+}
+
+/* =========================================================
+   LIQUID GLASS
+   ========================================================= */
+
+.glass {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.085),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.095);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.025),
+    0 25px 80px rgba(0, 0, 0, 0.22);
+
+  backdrop-filter:
+    blur(30px)
+    saturate(160%);
+
+  -webkit-backdrop-filter:
+    blur(30px)
+    saturate(160%);
+}
+
+/* =========================================================
+   FLOATING GLASS
+   ========================================================= */
+
+.glass-floating {
+  position: relative;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.09),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.105);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.025),
+    0 30px 100px rgba(0, 0, 0, 0.28);
+
+  backdrop-filter:
+    blur(34px)
+    saturate(170%);
+
+  -webkit-backdrop-filter:
+    blur(34px)
+    saturate(170%);
+
+  transition:
+    transform 0.5s var(--spring),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+.glass-floating:hover {
+  border-color:
+    rgba(255, 255, 255, 0.16);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 40px 120px rgba(0, 0, 0, 0.36);
+}
+
+/* =========================================================
+   GLASS REFLECTION
+   ========================================================= */
+
+.glass-reflection {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-reflection::before {
+  content: "";
+
+  position: absolute;
+
+  width: 70%;
+  height: 150%;
+
+  top: -70%;
+  left: -80%;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent,
+      rgba(255, 255, 255, 0.07),
+      transparent
+    );
+
+  transform: rotate(15deg);
+
+  pointer-events: none;
+
+  transition:
+    transform 1s var(--spring);
+}
+
+.glass-reflection:hover::before {
+  transform:
+    translateX(230%)
+    rotate(15deg);
+}
+
+/* =========================================================
+   GLASS CARD
+   ========================================================= */
+
+.glass-card {
+  background:
+    rgba(255, 255, 255, 0.045);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 28px;
+
+  backdrop-filter:
+    blur(25px)
+    saturate(150%);
+
+  -webkit-backdrop-filter:
+    blur(25px)
+    saturate(150%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 25px 70px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.4s var(--spring),
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(255, 255, 255, 0.13);
+
+  background:
+    rgba(255, 255, 255, 0.055);
+}
+
+/* =========================================================
+   AI GRADIENT
+   ========================================================= */
+
+.ai-gradient {
+  background:
+    linear-gradient(
+      135deg,
+      #3975ff 0%,
+      #7046ff 45%,
+      #a52fff 100%
+    );
+}
+
+/* =========================================================
+   GRADIENT TEXT
+   ========================================================= */
+
+.gradient-text {
+  background:
+    linear-gradient(
+      90deg,
+      #6ba7ff,
+      #9870ff,
+      #d46aff
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   AI ORB
+   ========================================================= */
+
+.ai-orb {
+  position: relative;
+
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3978ff,
+      #7542ff 50%,
+      #ae32ff
+    );
+
+  box-shadow:
+    0 20px 55px rgba(89, 65, 255, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+  overflow: hidden;
+
+  animation:
+    orbFloat 5s ease-in-out infinite;
+}
+
+.ai-orb::before {
+  content: "";
+
+  position: absolute;
+
+  width: 70%;
+  height: 70%;
+
+  top: -35%;
+  left: -20%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.3);
+
+  filter: blur(14px);
+}
+
+.ai-orb::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.2),
+      transparent 65%
+    );
+
+  transform:
+    translateX(-130%);
+
+  animation:
+    orbShine 4.5s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes orbShine {
+  0% {
+    transform: translateX(-130%);
+  }
+
+  45%,
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+/* =========================================================
+   PULSING AI RING
+   ========================================================= */
+
+.ai-pulse {
+  position: relative;
+}
+
+.ai-pulse::before,
+.ai-pulse::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -8px;
+
+  border-radius: inherit;
+
+  border:
+    1px solid rgba(111, 105, 255, 0.3);
+
+  animation:
+    aiPulse 2.5s ease-out infinite;
+}
+
+.ai-pulse::after {
+  animation-delay: 1.25s;
+}
+
+@keyframes aiPulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.glass-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 46px;
+
+  padding:
+    0 18px;
+
+  border-radius: 16px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  color: #f5f5f7;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  transition:
+    transform 0.3s var(--spring),
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.3s ease;
+}
+
+.glass-button:hover {
+  transform: translateY(-2px);
+
+  background:
+    rgba(255, 255, 255, 0.09);
+
+  border-color:
+    rgba(255, 255, 255, 0.17);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.glass-button:active {
+  transform: scale(0.95);
+}
+
+/* =========================================================
+   PRIMARY AI BUTTON
+   ========================================================= */
+
+.ai-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 48px;
+
+  padding:
+    0 21px;
+
+  border-radius: 17px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.14);
+
+  background:
+    linear-gradient(
+      135deg,
+      #386fff,
+      #7040ff,
+      #a72fff
+    );
+
+  color: white;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 14px 40px rgba(83, 64, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  transition:
+    transform 0.3s var(--spring),
+    filter 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ai-button:hover {
+  transform: translateY(-3px);
+
+  filter: brightness(1.08);
+
+  box-shadow:
+    0 20px 55px rgba(83, 64, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ai-button:active {
+  transform: scale(0.95);
+}
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.glass-input {
+  width: 100%;
+
+  color: white;
+
+  background:
+    rgba(0, 0, 0, 0.2);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.075);
+
+  border-radius: 20px;
+
+  padding:
+    17px 19px;
+
+  outline: none;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.glass-input::placeholder {
+  color:
+    rgba(255, 255, 255, 0.22);
+}
+
+.glass-input:focus {
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  border-color:
+    rgba(91, 119, 255, 0.5);
+
+  box-shadow:
+    0 0 0 4px rgba(80, 100, 255, 0.08),
+    0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.glass-progress {
+  width: 100%;
+  height: 7px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+}
+
+.glass-progress-bar {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #3978ff,
+      #7440ff,
+      #a82fff
+    );
+
+  box-shadow:
+    0 0 25px rgba(101, 72, 255, 0.6);
+
+  transition:
+    width 0.8s var(--spring);
+}
+
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #42e98a;
+
+  box-shadow:
+    0 0 14px rgba(66, 233, 138, 0.8);
+
+  animation:
+    statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.55;
+    transform: scale(0.75);
+  }
+}
+
+/* =========================================================
+   PAGE ENTER
+   ========================================================= */
+
+.page-enter {
+  animation:
+    pageEnter 0.65s var(--spring) both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform:
+      translateY(18px)
+      scale(0.985);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+    filter: blur(0);
+  }
+}
+
+/* =========================================================
+   FLOATING ANIMATION
+   ========================================================= */
+
+.float {
+  animation:
+    floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =========================================================
+   SHIMMER
+   ========================================================= */
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.05),
+      transparent 70%
+    );
+
+  transform:
+    translateX(-120%);
+
+  animation:
+    shimmer 5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  40%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+/* =========================================================
+   GLASS NAVIGATION
+   ========================================================= */
+
+.glass-nav {
+  background:
+    rgba(15, 15, 20, 0.62);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.09);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  backdrop-filter:
+    blur(32px)
+    saturate(170%);
+
+  -webkit-backdrop-filter:
+    blur(32px)
+    saturate(170%);
+}
+
+/* =========================================================
+   NAV ITEM
+   ========================================================= */
+
+.nav-item {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding:
+    11px 14px;
+
+  border-radius: 15px;
+
+  color:
+    rgba(255, 255, 255, 0.58);
+
+  transition:
+    color 0.25s ease,
+    background 0.3s ease,
+    transform 0.3s var(--spring);
+}
+
+.nav-item:hover {
+  color: white;
+
+  background:
+    rgba(255, 255, 255, 0.065);
+
+  transform:
+    translateX(3px);
+}
+
+.nav-item.active {
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(76, 105, 255, 0.22),
+      rgba(146, 69, 255, 0.17)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.nav-item.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  width: 3px;
+  height: 20px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      #5d8aff,
+      #a33cff
+    );
+
+  box-shadow:
+    0 0 14px rgba(102, 93, 255, 0.8);
+}
+
+/* =========================================================
+   SCORE GLOW
+   ========================================================= */
+
+.score-glow {
+  text-shadow:
+    0 0 25px rgba(104, 103, 255, 0.4);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  body {
+    background-size:
+      36px 36px,
+      36px 36px,
+      auto,
+      auto,
+      auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .glass-card,
+  .glass-floating {
+    border-radius: 23px;
+  }
+
+  .ai-orb {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   VIVAAI — LAYOUT ALIGNMENT
+   Keep liquid glass, remove unnecessary empty space
+   ========================================================= */
+
+/* Prevent the application from creating artificial height */
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+/* Main application container */
+#root {
+  position: relative;
+}
+
+/* Remove accidental top spacing from common page wrappers */
+#root > div {
+  min-height: 100vh;
+}
+
+/* =========================================================
+   PAGE CONTENT ALIGNMENT
+   ========================================================= */
+
+.page-enter {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Don't allow an invisible spacer before the actual page */
+main {
+  margin-top: 0 !important;
+}
+
+/* =========================================================
+   GLASS NAVBAR POSITION
+   ========================================================= */
+
+.glass-nav {
+  margin-top: 0 !important;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.glass-floating {
+  margin-top: 0;
+}
+
+/* =========================================================
+   VIVA ROOM / PAGE CONTENT
+   ========================================================= */
+
+.viva-page,
+.viva-room,
+.viva-container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  main {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .page-enter {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* =========================================================
+   GOOGLE LOGIN
+========================================================= */
+
+.login-page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  padding: 30px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(79, 70, 229, 0.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(124, 58, 237, 0.12),
+      transparent 30%
+    ),
+    #07070a;
+}
+
+.login-glow {
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+.login-glow-one {
+  top: -250px;
+  left: -150px;
+
+  background: rgba(79, 70, 229, 0.20);
+}
+
+.login-glow-two {
+  right: -150px;
+  bottom: -250px;
+
+  background: rgba(124, 58, 237, 0.18);
+}
+
+.login-card {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 470px;
+
+  padding: 38px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.09);
+
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(25px);
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.login-logo {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #635bff,
+      #7c3aed
+    );
+
+  box-shadow:
+    0 12px 30px
+      rgba(99, 91, 255, 0.25);
+}
+
+.login-brand h1 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 20px;
+
+  font-weight: 850;
+}
+
+.login-brand p {
+  margin: 2px 0 0;
+
+  color:
+    rgba(255, 255, 255, 0.35);
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+.login-header {
+  margin-top: 42px;
+}
+
+.login-eyebrow {
+  margin: 0 0 12px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+
+  color:
+    rgba(255, 255, 255, 0.35);
+}
+
+.login-header h2 {
+  margin: 0;
+
+  font-size: 38px;
+
+  line-height: 1;
+
+  letter-spacing: -0.045em;
+
+  font-weight: 900;
+
+  color: white;
+}
+
+.login-header h2 span {
+  background:
+    linear-gradient(
+      100deg,
+      #8ea2ff,
+      #a78bfa,
+      #d084ff
+    );
+
+  background-clip: text;
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.login-header > p:last-child {
+  margin: 18px 0 0;
+
+  font-size: 14px;
+
+  line-height: 1.65;
+
+  color:
+    rgba(255, 255, 255, 0.42);
+}
+
+.google-login-button {
+  width: 100%;
+
+  height: 54px;
+
+  margin-top: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  border-radius: 14px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.11);
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.google-login-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  background:
+    rgba(255, 255, 255, 0.085);
+
+  border-color:
+    rgba(255, 255, 255, 0.20);
+}
+
+.google-login-button:disabled {
+  cursor: wait;
+
+  opacity: 0.65;
+}
+
+.google-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: white;
+
+  color: #4285f4;
+}
+
+.login-error {
+  margin-top: 14px;
+
+  padding: 12px 14px;
+
+  border-radius: 12px;
+
+  background:
+    rgba(239, 68, 68, 0.08);
+
+  border: 1px solid
+    rgba(239, 68, 68, 0.18);
+
+  color:
+    rgba(252, 165, 165, 0.9);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.login-features {
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
+
+  margin-top: 28px;
+
+  padding-top: 24px;
+
+  border-top: 1px solid
+    rgba(255, 255, 255, 0.07);
+}
+
+.login-features div {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color:
+    rgba(255, 255, 255, 0.36);
+
+  font-size: 11px;
+}
+
+.login-features svg {
+  color: #a78bfa;
+}
+
+.login-footer {
+  margin: 22px 0 0;
+
+  text-align: center;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+
+  color:
+    rgba(255, 255, 255, 0.22);
+}
+
+.auth-loading-screen {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #07070a;
+}
+
+.auth-loading-card {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+.auth-loading-card p {
+  margin: 0;
+
+  color:
+    rgba(255, 255, 255, 0.40);
+
+  font-size: 13px;
+}
+
+.auth-loading-spinner {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  border: 3px solid
+    rgba(255, 255, 255, 0.10);
+
+  border-top-color: #8b5cf6;
+
+  animation:
+    viva-spin 0.8s linear infinite;
+}
+
+@keyframes viva-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .login-page {
+    padding: 18px;
+  }
+
+  .login-card {
+    padding: 28px 22px;
+
+    border-radius: 24px;
+  }
+
+  .login-header h2 {
+    font-size: 34px;
+  }
+}

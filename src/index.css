@@ -1,0 +1,364 @@
+@import "tailwindcss";
+
+/* =====================================================
+   VIVAAI GLOBAL DESIGN
+===================================================== */
+
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #e8e9f0;
+  background: #07070a;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  background: #07070a;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(124, 58, 237, 0.10),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(59, 130, 246, 0.06),
+      transparent 30%
+    ),
+    #07070a;
+
+  color: #e8e9f0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.35);
+  color: white;
+}
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07070a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.20);
+}
+
+/* =====================================================
+   VIVAAI BUTTONS
+===================================================== */
+
+.ai-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+
+  min-height: 46px !important;
+  padding: 0 18px !important;
+
+  border: 1px solid rgba(139, 92, 246, 0.45) !important;
+  border-radius: 13px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #7c3aed
+    ) !important;
+
+  color: white !important;
+
+  font-size: 14px !important;
+  font-weight: 650 !important;
+
+  box-shadow:
+    0 10px 30px rgba(99, 102, 241, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease !important;
+}
+
+.ai-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.glass-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+
+  min-height: 46px !important;
+  padding: 0 17px !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 13px !important;
+
+  background: rgba(255, 255, 255, 0.045) !important;
+
+  color: rgba(230, 232, 240, 0.72) !important;
+
+  font-size: 14px !important;
+  font-weight: 600 !important;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease !important;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.075) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  color: white !important;
+}
+
+/* =====================================================
+   GLASS CARDS
+===================================================== */
+
+.glass-card,
+.glass-floating {
+  border: 1px solid rgba(255, 255, 255, 0.075);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.012)
+    );
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.20);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.glass-card {
+  border-radius: 24px;
+}
+
+.glass-floating {
+  border-radius: 30px;
+}
+
+/* =====================================================
+   AI ORB
+===================================================== */
+
+.ai-orb {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #7c3aed
+    );
+
+  box-shadow:
+    0 12px 30px rgba(99, 102, 241, 0.22);
+}
+
+.ai-pulse {
+  animation: aiPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes aiPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 12px 30px rgba(99, 102, 241, 0.18);
+  }
+
+  50% {
+    box-shadow:
+      0 12px 42px rgba(124, 58, 237, 0.38);
+  }
+}
+
+/* =====================================================
+   GRADIENT TEXT
+===================================================== */
+
+.gradient-text {
+  background:
+    linear-gradient(
+      90deg,
+      #7c9cff,
+      #9b7bff,
+      #c084fc
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(17, 18, 25, 0.98),
+      rgba(10, 11, 16, 0.98)
+    );
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+.nav-item {
+  color: rgba(195, 198, 210, 0.52);
+}
+
+.nav-item:hover {
+  color: rgba(235, 236, 242, 0.85);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.nav-item.active {
+  color: #f0f0f5;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(124, 58, 237, 0.18),
+      rgba(124, 58, 237, 0.07)
+    );
+
+  border-color:
+    rgba(124, 58, 237, 0.35);
+}
+
+/* =====================================================
+   TEXT HIERARCHY
+===================================================== */
+
+h1 {
+  color: #e9eaf1;
+}
+
+h2 {
+  color: #e5e7ee;
+}
+
+h3 {
+  color: #e1e3eb;
+}
+
+p {
+  color: rgba(195, 200, 214, 0.48);
+}
+
+/* Don't make every paragraph pure white */
+
+.text-white\/45 {
+  color: rgba(195, 200, 214, 0.45) !important;
+}
+
+.text-white\/40 {
+  color: rgba(195, 200, 214, 0.40) !important;
+}
+
+.text-white\/35 {
+  color: rgba(195, 200, 214, 0.35) !important;
+}
+
+.text-white\/30 {
+  color: rgba(195, 200, 214, 0.30) !important;
+}
+
+.text-white\/25 {
+  color: rgba(195, 200, 214, 0.25) !important;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 250px;
+  }
+}
+
+@media (max-width: 700px) {
+  .page-content {
+    padding: 20px !important;
+  }
+}
