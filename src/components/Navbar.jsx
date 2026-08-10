@@ -46,7 +46,7 @@ const titles = {
 
 
 const API_BASE =
-  "http://localhost:5000";
+  "https://vivaai-backend-9dwn.onrender.com";
 
 
 export default function Navbar({
